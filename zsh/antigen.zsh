@@ -13,3 +13,5 @@ antigen bundles <<EOBUNDLES
 EOBUNDLES
 
 antigen apply
+
+antigen theme stefanorg/oh-my-zsh themes/n4z4
