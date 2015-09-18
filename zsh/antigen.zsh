@@ -12,6 +12,4 @@ antigen bundles <<EOBUNDLES
   zsh-users/zsh-completions src
 EOBUNDLES
 
-antigen theme stefanorg/oh-my-zsh themes/n4z4
-
 antigen apply
