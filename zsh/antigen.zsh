@@ -10,6 +10,7 @@ source $HOME/zsh/lib/antigen/antigen.zsh
 antigen bundles <<EOBUNDLES
   zsh-users/zsh-syntax-highlighting
   zsh-users/zsh-completions src
+  felixr/docker-zsh-completion
   common-aliases
   composer
   docker
