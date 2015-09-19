@@ -7,11 +7,16 @@ fi
 #loading antigen
 source $HOME/zsh/lib/antigen/antigen.zsh
 
-#antigen use oh-my-zsh
-
 antigen bundles <<EOBUNDLES
   zsh-users/zsh-syntax-highlighting
   zsh-users/zsh-completions src
+  common-aliases
+  composer
+  docker
+  git
+  git-extras
+  git-flow
+  web-search
 EOBUNDLES
 
 antigen theme pygmalion
