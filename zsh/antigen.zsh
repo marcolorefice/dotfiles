@@ -11,6 +11,8 @@ antigen bundles <<EOBUNDLES
   zsh-users/zsh-syntax-highlighting
   zsh-users/zsh-completions src
   felixr/docker-zsh-completion
+  zsh-users/zsh-history-substring-search
+  primait/docker-enter-completion oh-my-zsh/custom/plugins/docker-enter
   common-aliases
   composer
   docker
