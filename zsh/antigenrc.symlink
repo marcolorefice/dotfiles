@@ -1,4 +1,3 @@
-# bundles
 if [[ ! -d $HOME/zsh/lib/antigen ]];
 then
   git clone https://github.com/zsh-users/antigen.git $HOME/zsh/lib/antigen
@@ -7,6 +6,10 @@ fi
 #loading antigen
 source $HOME/zsh/lib/antigen/antigen.zsh
 
+#loading oh-my-zsh framework lib
+antigen use oh-my-zsh
+
+# bundles
 antigen bundles <<EOBUNDLES
   zsh-users/zsh-syntax-highlighting
   zsh-users/zsh-completions src
@@ -22,6 +25,13 @@ antigen bundles <<EOBUNDLES
   web-search
 EOBUNDLES
 
-antigen theme pygmalion
-
+#apply bundle
 antigen apply
+
+if [ "$OSTYPE"="darwin11.0" ]; then
+  antigen-bundle osx
+fi
+
+#antigen theme pygmalion
+antigen theme stefanorg/oh-my-zsh themes/stefanorg
+
