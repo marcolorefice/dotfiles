@@ -17,7 +17,6 @@ antigen bundles <<EOBUNDLES
   zsh-users/zsh-history-substring-search
   primait/docker-enter-completion oh-my-zsh/custom/plugins/docker-enter
   common-aliases
-  composer
   docker
   git
   git-extras

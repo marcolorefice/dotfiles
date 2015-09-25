@@ -15,8 +15,8 @@
       "vendor"
     ]
     themes: [
-      "unity-ui"
-      "glacier-syntax"
+      "spacegray-peacock-ui"
+      "peacocks-in-space-syntax"
     ]
     hideGitIgnoredFiles: true
     disabledPackages: [
