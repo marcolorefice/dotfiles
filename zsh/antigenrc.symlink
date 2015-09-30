@@ -22,6 +22,8 @@ antigen bundles <<EOBUNDLES
   git-extras
   git-flow
   web-search
+  tmux
+  tmuxinator
 EOBUNDLES
 
 #apply bundle

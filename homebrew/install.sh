@@ -22,6 +22,6 @@ then
 fi
 
 # Install homebrew packages
-brew install grc coreutils spark ack
+brew install grc coreutils spark ack tmux reattach-to-user-namespace
 
 exit 0
