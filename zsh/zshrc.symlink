@@ -44,4 +44,3 @@ unset config_files
 #ANTIGEN#
 #########
 source $HOME/.antigenrc
-
