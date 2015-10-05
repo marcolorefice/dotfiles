@@ -4,6 +4,11 @@
 #
 # This installs some of the common dependencies needed (or at least desired)
 # using Homebrew.
+if [ "$(echo $OS)" == "Windows_NT" ]
+then
+  echo "Windows_NT detected. Skip Homebrew installation."
+  exit 0
+fi
 
 # Check for Homebrew
 if test ! $(which brew)
@@ -18,7 +23,7 @@ then
   then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)"
   fi
-  
+
 fi
 
 # Install homebrew packages
