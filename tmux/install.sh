@@ -11,9 +11,16 @@ then
   if test "$(uname)" = "Darwin"
   then
 	 brew install tmux reattach-to-user-namespace
+	 if test ! $(which gem)
+	 then
+        	echo "  No ruby gem found. Skipp installation of tmuxinator"
+	        exit 1;
+	 fi
+	 echo "  Installing tmuxinator ..."
+	 sudo gem install tmuxinator
   elif test "$(expr substr $(uname -s) 1 5)" = "Linux"
   then
-	 brew install tmux reattach-to-user-namespace
+	 sudo dnf install -y tmux tmuxinator 
   elif test "$(expr substr $(uname -s) 1 6)" = "CYGWIN"
   then
     echo "CYGWIN detected search form pact"
@@ -32,8 +39,5 @@ then
 	echo "  No ruby gem found. Skipp installation of tmuxinator"
 	exit 1;
 fi
-
-echo "  Installing tmuxinator ..."
-sudo gem install tmuxinator
 
 exit 0

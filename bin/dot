@@ -13,7 +13,16 @@ then
     exit 1;
   fi
   pact update
-else
+fi
+
+if [ "$(uname)" == "Linux" ]
+then
+   echo "Linux detected. "
+   brew update
+fi
+
+if [ "$(uname)" == "Darwin" ]
+then
   # Set OS X defaults
   $ZSH/osx/set-defaults.sh
 
