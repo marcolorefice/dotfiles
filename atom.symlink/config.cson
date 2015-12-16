@@ -1,10 +1,10 @@
 "*":
   editor:
     showIndentGuide: true
-    fontFamily: "Menlo"
     invisibles: {}
-    fontSize: 15
+    fontSize: 17
     softWrapAtPreferredLineLength: true
+    fontFamily: "Source Code Pro"
   core:
     ignoredNames: [
       ".bundle"

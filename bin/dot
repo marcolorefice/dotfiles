@@ -6,11 +6,29 @@
 # to make sure you're on the latest and greatest.
 export ZSH=$HOME/.dotfiles
 
-# Set OS X defaults
-$ZSH/osx/set-defaults.sh
+if [ "$(echo $OS)" == "Windows_NT" ]
+then
+  if [[ ! $(which pact) ]]; then
+    echo "Not a babun shell. Use babun on windows: http://babun.github.io/"
+    exit 1;
+  fi
+  pact update
+fi
 
-# Upgrade homebrew
-brew update
+if [ "$(uname)" == "Linux" ]
+then
+   echo "Linux detected. "
+   brew update
+fi
 
-# Install homebrew packages
-$ZSH/homebrew/install.sh 2>&1
+if [ "$(uname)" == "Darwin" ]
+then
+  # Set OS X defaults
+  $ZSH/osx/set-defaults.sh
+
+  # Upgrade homebrew
+  brew update
+
+  # Install homebrew packages
+  $ZSH/homebrew/install.sh 2>&1
+fi
