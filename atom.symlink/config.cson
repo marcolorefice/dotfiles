@@ -2,7 +2,7 @@
   editor:
     showIndentGuide: true
     invisibles: {}
-    fontSize: 17
+    fontSize: 16
     softWrapAtPreferredLineLength: true
     fontFamily: "Source Code Pro"
   core:
