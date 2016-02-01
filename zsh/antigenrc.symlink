@@ -14,6 +14,8 @@ antigen bundles <<EOBUNDLES
   zsh-users/zsh-syntax-highlighting
   zsh-users/zsh-completions src
   primait/docker-enter-completion oh-my-zsh/custom/plugins/docker-enter
+  rvm
+  vi-mode
 EOBUNDLES
 
 #apply bundle
@@ -23,5 +25,5 @@ if [ "$OSTYPE"="darwin11.0" ]; then
   antigen-bundle osx
 fi
 
-#antigen theme pygmalion
-antigen theme stefanorg/oh-my-zsh themes/stefanorg
+antigen theme pygmalion
+#antigen theme stefanorg/oh-my-zsh themes/stefanorg

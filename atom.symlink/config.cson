@@ -4,7 +4,6 @@
     invisibles: {}
     fontSize: 17
     softWrapAtPreferredLineLength: true
-    fontFamily: "Source Code Pro"
   core:
     ignoredNames: [
       ".bundle"
