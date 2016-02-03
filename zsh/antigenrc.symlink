@@ -14,8 +14,6 @@ antigen bundles <<EOBUNDLES
   zsh-users/zsh-syntax-highlighting
   zsh-users/zsh-completions src
   primait/docker-enter-completion oh-my-zsh/custom/plugins/docker-enter
-  rvm
-  vi-mode
 EOBUNDLES
 
 #apply bundle
