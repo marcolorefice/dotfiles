@@ -23,6 +23,6 @@ alias dcl='$DOCKER_COMPOSE logs'
 # ####################################################
 #  Aliasing make docker command https://git.io/vggff
 # ####################################################
-alias composer='make -f $HOME/make-docker-command/Makefile composer'
-alias phpunit='make -f $HOME/make-docker-command/Makefile phpunit'
-alias bower='make -f $HOME/make-docker-command/Makefile bower'
+alias composer='make -f $HOME/.make-docker-command/Makefile composer'
+alias phpunit='make -f $HOME/.make-docker-command/Makefile phpunit'
+alias bower='make -f $HOME/.make-docker-command/Makefile bower'
