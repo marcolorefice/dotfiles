@@ -1,10 +1,11 @@
 "*":
-  editor:
-    showIndentGuide: true
-    invisibles: {}
-    fontSize: 16
-    softWrapAtPreferredLineLength: true
   core:
+    disabledPackages: [
+      "background-tips"
+      "exception-reporting"
+      "metrics"
+    ]
+    hideGitIgnoredFiles: true
     ignoredNames: [
       ".bundle"
       ".git"
@@ -14,23 +15,25 @@
       "vendor"
     ]
     themes: [
-      "spacegray-peacock-ui"
-      "peacocks-in-space-syntax"
+      "seti-ui"
+      "nova-atom-syntax"
     ]
-    hideGitIgnoredFiles: true
-    disabledPackages: [
-      "background-tips"
-      "exception-reporting"
-      "metrics"
-    ]
+  editor:
+    fontSize: 15
+    invisibles: {}
+    showIndentGuide: true
+    softWrapAtPreferredLineLength: true
+  "markdown-preview": {}
+  "release-notes":
+    viewedVersion: "0.89.0"
   "spell-check":
     grammars: [
       "text.plain"
       "source.gfm"
       "text.git-commit"
     ]
+  "tool-bar":
+    position: "Right"
+    visible: false
   welcome:
     showOnStartup: false
-  "release-notes":
-    viewedVersion: "0.89.0"
-  "markdown-preview": {}
