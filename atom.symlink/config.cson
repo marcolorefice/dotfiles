@@ -1,4 +1,7 @@
 "*":
+  "atom-ternjs":
+    inlineFnCompletionDocumentation: true
+    useSnippets: true
   core:
     disabledPackages: [
       "background-tips"
@@ -14,6 +17,7 @@
       "tmp"
       "vendor"
     ]
+    telemetryConsent: "no"
     themes: [
       "seti-ui"
       "nova-atom-syntax"

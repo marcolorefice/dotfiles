@@ -2,40 +2,40 @@
   "_args": [
     [
       {
-        "raw": "/private/var/folders/_q/wg42tl3j4ld6_5jtv6rflvgc0000gn/T/d-11698-84073-16z4i08/package.tgz",
+        "raw": "/private/var/folders/9w/xbbvnz8d6pb_5jlgk4_63yx00000gp/T/d-116913-49910-3yc2i7/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/private/var/folders/_q/wg42tl3j4ld6_5jtv6rflvgc0000gn/T/d-11698-84073-16z4i08/package.tgz",
-        "spec": "/private/var/folders/_q/wg42tl3j4ld6_5jtv6rflvgc0000gn/T/d-11698-84073-16z4i08/package.tgz",
+        "rawSpec": "/private/var/folders/9w/xbbvnz8d6pb_5jlgk4_63yx00000gp/T/d-116913-49910-3yc2i7/package.tgz",
+        "spec": "/private/var/folders/9w/xbbvnz8d6pb_5jlgk4_63yx00000gp/T/d-116913-49910-3yc2i7/package.tgz",
         "type": "local"
       },
-      "/private/var/folders/_q/wg42tl3j4ld6_5jtv6rflvgc0000gn/T/apm-install-dir-11698-84073-1fxhy6n"
+      "/private/var/folders/9w/xbbvnz8d6pb_5jlgk4_63yx00000gp/T/apm-install-dir-116913-49910-12eaeww"
     ]
   ],
-  "_from": "../d-11698-84073-16z4i08/package.tgz",
-  "_id": "auto-detect-indentation@1.2.0",
+  "_from": "../d-116913-49910-3yc2i7/package.tgz",
+  "_id": "auto-detect-indentation@1.3.0",
   "_inCache": true,
   "_installable": true,
   "_location": "/auto-detect-indentation",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/_q/wg42tl3j4ld6_5jtv6rflvgc0000gn/T/d-11698-84073-16z4i08/package.tgz",
+    "raw": "/private/var/folders/9w/xbbvnz8d6pb_5jlgk4_63yx00000gp/T/d-116913-49910-3yc2i7/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/private/var/folders/_q/wg42tl3j4ld6_5jtv6rflvgc0000gn/T/d-11698-84073-16z4i08/package.tgz",
-    "spec": "/private/var/folders/_q/wg42tl3j4ld6_5jtv6rflvgc0000gn/T/d-11698-84073-16z4i08/package.tgz",
+    "rawSpec": "/private/var/folders/9w/xbbvnz8d6pb_5jlgk4_63yx00000gp/T/d-116913-49910-3yc2i7/package.tgz",
+    "spec": "/private/var/folders/9w/xbbvnz8d6pb_5jlgk4_63yx00000gp/T/d-116913-49910-3yc2i7/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-11698-84073-16z4i08/package.tgz",
-  "_shasum": "9f7a6388454e5a18e8c6b26111686f89e25b119f",
+  "_resolved": "file:../d-116913-49910-3yc2i7/package.tgz",
+  "_shasum": "818851261e5fd2022fa64a3e75744818ea0feca8",
   "_shrinkwrap": null,
-  "_spec": "/private/var/folders/_q/wg42tl3j4ld6_5jtv6rflvgc0000gn/T/d-11698-84073-16z4i08/package.tgz",
-  "_where": "/private/var/folders/_q/wg42tl3j4ld6_5jtv6rflvgc0000gn/T/apm-install-dir-11698-84073-1fxhy6n",
+  "_spec": "/private/var/folders/9w/xbbvnz8d6pb_5jlgk4_63yx00000gp/T/d-116913-49910-3yc2i7/package.tgz",
+  "_where": "/private/var/folders/9w/xbbvnz8d6pb_5jlgk4_63yx00000gp/T/apm-install-dir-116913-49910-12eaeww",
   "author": {
     "name": "Jason Tokoph",
     "email": "jason@tokoph.net"
@@ -70,5 +70,5 @@
     "type": "git",
     "url": "git+https://github.com/jtokoph/auto-detect-indentation.git"
   },
-  "version": "1.2.0"
+  "version": "1.3.0"
 }
