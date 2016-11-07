@@ -1,0 +1,7 @@
+".source.js":
+  "app.get":
+    "prefix": "app.get"
+    "body": "app.get('/$1', ${2:function(req, res) {\r\n\t$3\r\n\\}});"
+  "app.post":
+    "prefix": "app.post"
+    "body": "app.post('/$1', ${2:function(req, res) {\r\n\t$3\r\n\\}});"

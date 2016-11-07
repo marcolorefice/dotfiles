@@ -1,4 +1,7 @@
 "*":
+  "atom-beautify":
+    general:
+      _analyticsUserId: "556b8f8a-22e4-4867-bf6a-d82180a70b57"
   "atom-ternjs":
     inlineFnCompletionDocumentation: true
     useSnippets: true
@@ -7,6 +10,8 @@
       "background-tips"
       "exception-reporting"
       "metrics"
+      "language-babel"
+      "editorconfig"
     ]
     hideGitIgnoredFiles: true
     ignoredNames: [
@@ -19,11 +24,11 @@
     ]
     telemetryConsent: "no"
     themes: [
-      "seti-ui"
-      "nova-atom-syntax"
+      "spacegray-peacock-ui"
+      "peacocks-in-space-syntax"
     ]
   editor:
-    fontSize: 15
+    fontSize: 16
     invisibles: {}
     showIndentGuide: true
     softWrapAtPreferredLineLength: true
@@ -36,8 +41,9 @@
       "source.gfm"
       "text.git-commit"
     ]
+  "terminal-plus":
+    core: {}
   "tool-bar":
     position: "Right"
-    visible: false
   welcome:
     showOnStartup: false

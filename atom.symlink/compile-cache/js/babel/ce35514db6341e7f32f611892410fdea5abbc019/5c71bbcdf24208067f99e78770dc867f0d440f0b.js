@@ -1,0 +1,71 @@
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+/** @babel */
+/* eslint-env jasmine, atomtest */
+
+/*
+  This file contains verifying specs for:
+  https://github.com/sindresorhus/atom-editorconfig/issues/118
+*/
+
+var _fs = require('fs');
+
+var _fs2 = _interopRequireDefault(_fs);
+
+var _path = require('path');
+
+var _path2 = _interopRequireDefault(_path);
+
+var testPrefix = _path2['default'].basename(__filename).split('-').shift();
+var projectRoot = _path2['default'].join(__dirname, 'fixtures');
+var filePath = _path2['default'].join(projectRoot, 'test.' + testPrefix);
+
+describe('editorconfig', function () {
+	var textEditor = undefined;
+	var textWithoutTrailingWhitespaces = 'I\nam\nProvidence.';
+	var textWithManyTrailingWhitespaces = 'I  \t  \nam  \t  \nProvidence.';
+
+	beforeEach(function () {
+		waitsForPromise(function () {
+			return Promise.all([atom.packages.activatePackage('editorconfig'), atom.workspace.open(filePath)]).then(function (results) {
+				textEditor = results[1];
+			});
+		});
+	});
+
+	afterEach(function () {
+		// remove the created fixture, if it exists
+		runs(function () {
+			_fs2['default'].stat(filePath, function (err, stats) {
+				if (!err && stats.isFile()) {
+					_fs2['default'].unlink(filePath);
+				}
+			});
+		});
+
+		waitsFor(function () {
+			try {
+				return _fs2['default'].statSync(filePath).isFile() === false;
+			} catch (err) {
+				return true;
+			}
+		}, 5000, 'removed ' + filePath);
+	});
+
+	describe('Atom being set to remove trailing whitespaces', function () {
+		beforeEach(function () {
+			// eslint-disable-next-line camelcase
+			textEditor.getBuffer().editorconfig.settings.trim_trailing_whitespace = true;
+			// eslint-disable-next-line camelcase
+			textEditor.getBuffer().editorconfig.settings.insert_final_newline = false;
+		});
+
+		it('should strip trailing whitespaces on save.', function () {
+			textEditor.setText(textWithManyTrailingWhitespaces);
+			textEditor.save();
+			expect(textEditor.getText().length).toEqual(textWithoutTrailingWhitespaces.length);
+		});
+	});
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3N0ZWZhbm8vLmRvdGZpbGVzL2F0b20uc3ltbGluay9wYWNrYWdlcy9lZGl0b3Jjb25maWcvc3BlYy9pc3MxMTgtc3BlYy5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O2tCQVFlLElBQUk7Ozs7b0JBQ0YsTUFBTTs7OztBQUV2QixJQUFNLFVBQVUsR0FBRyxrQkFBSyxRQUFRLENBQUMsVUFBVSxDQUFDLENBQUMsS0FBSyxDQUFDLEdBQUcsQ0FBQyxDQUFDLEtBQUssRUFBRSxDQUFDO0FBQ2hFLElBQU0sV0FBVyxHQUFHLGtCQUFLLElBQUksQ0FBQyxTQUFTLEVBQUUsVUFBVSxDQUFDLENBQUM7QUFDckQsSUFBTSxRQUFRLEdBQUcsa0JBQUssSUFBSSxDQUFDLFdBQVcsWUFBVSxVQUFVLENBQUcsQ0FBQzs7QUFFOUQsUUFBUSxDQUFDLGNBQWMsRUFBRSxZQUFNO0FBQzlCLEtBQUksVUFBVSxZQUFBLENBQUM7QUFDZixLQUFNLDhCQUE4QixHQUFHLG9CQUFvQixDQUFDO0FBQzVELEtBQU0sK0JBQStCLEdBQUcsZ0NBQWdDLENBQUM7O0FBRXpFLFdBQVUsQ0FBQyxZQUFNO0FBQ2hCLGlCQUFlLENBQUM7VUFDZixPQUFPLENBQUMsR0FBRyxDQUFDLENBQ1gsSUFBSSxDQUFDLFFBQVEsQ0FBQyxlQUFlLENBQUMsY0FBYyxDQUFDLEVBQzdDLElBQUksQ0FBQyxTQUFTLENBQUMsSUFBSSxDQUFDLFFBQVEsQ0FBQyxDQUM3QixDQUFDLENBQUMsSUFBSSxDQUFDLFVBQUEsT0FBTyxFQUFJO0FBQ2xCLGNBQVUsR0FBRyxPQUFPLENBQUMsQ0FBQyxDQUFDLENBQUM7SUFDeEIsQ0FBQztHQUFBLENBQ0YsQ0FBQztFQUNGLENBQUMsQ0FBQzs7QUFFSCxVQUFTLENBQUMsWUFBTTs7QUFFZixNQUFJLENBQUMsWUFBTTtBQUNWLG1CQUFHLElBQUksQ0FBQyxRQUFRLEVBQUUsVUFBQyxHQUFHLEVBQUUsS0FBSyxFQUFLO0FBQ2pDLFFBQUksQ0FBQyxHQUFHLElBQUksS0FBSyxDQUFDLE1BQU0sRUFBRSxFQUFFO0FBQzNCLHFCQUFHLE1BQU0sQ0FBQyxRQUFRLENBQUMsQ0FBQztLQUNwQjtJQUNELENBQUMsQ0FBQztHQUNILENBQUMsQ0FBQzs7QUFFSCxVQUFRLENBQUMsWUFBTTtBQUNkLE9BQUk7QUFDSCxXQUFPLGdCQUFHLFFBQVEsQ0FBQyxRQUFRLENBQUMsQ0FBQyxNQUFNLEVBQUUsS0FBSyxLQUFLLENBQUM7SUFDaEQsQ0FBQyxPQUFPLEdBQUcsRUFBRTtBQUNiLFdBQU8sSUFBSSxDQUFDO0lBQ1o7R0FDRCxFQUFFLElBQUksZUFBYSxRQUFRLENBQUcsQ0FBQztFQUNoQyxDQUFDLENBQUM7O0FBRUgsU0FBUSxDQUFDLCtDQUErQyxFQUFFLFlBQU07QUFDL0QsWUFBVSxDQUFDLFlBQU07O0FBRWhCLGFBQVUsQ0FBQyxTQUFTLEVBQUUsQ0FBQyxZQUFZLENBQUMsUUFBUSxDQUFDLHdCQUF3QixHQUFHLElBQUksQ0FBQzs7QUFFN0UsYUFBVSxDQUFDLFNBQVMsRUFBRSxDQUFDLFlBQVksQ0FBQyxRQUFRLENBQUMsb0JBQW9CLEdBQUcsS0FBSyxDQUFDO0dBQzFFLENBQUMsQ0FBQzs7QUFFSCxJQUFFLENBQUMsNENBQTRDLEVBQUUsWUFBTTtBQUN0RCxhQUFVLENBQUMsT0FBTyxDQUFDLCtCQUErQixDQUFDLENBQUM7QUFDcEQsYUFBVSxDQUFDLElBQUksRUFBRSxDQUFDO0FBQ2xCLFNBQU0sQ0FBQyxVQUFVLENBQUMsT0FBTyxFQUFFLENBQUMsTUFBTSxDQUFDLENBQUMsT0FBTyxDQUFDLDhCQUE4QixDQUFDLE1BQU0sQ0FBQyxDQUFDO0dBQ25GLENBQUMsQ0FBQztFQUNILENBQUMsQ0FBQztDQUNILENBQUMsQ0FBQyIsImZpbGUiOiIvaG9tZS9zdGVmYW5vLy5kb3RmaWxlcy9hdG9tLnN5bWxpbmsvcGFja2FnZXMvZWRpdG9yY29uZmlnL3NwZWMvaXNzMTE4LXNwZWMuanMiLCJzb3VyY2VzQ29udGVudCI6WyIvKiogQGJhYmVsICovXG4vKiBlc2xpbnQtZW52IGphc21pbmUsIGF0b210ZXN0ICovXG5cbi8qXG4gIFRoaXMgZmlsZSBjb250YWlucyB2ZXJpZnlpbmcgc3BlY3MgZm9yOlxuICBodHRwczovL2dpdGh1Yi5jb20vc2luZHJlc29yaHVzL2F0b20tZWRpdG9yY29uZmlnL2lzc3Vlcy8xMThcbiovXG5cbmltcG9ydCBmcyBmcm9tICdmcyc7XG5pbXBvcnQgcGF0aCBmcm9tICdwYXRoJztcblxuY29uc3QgdGVzdFByZWZpeCA9IHBhdGguYmFzZW5hbWUoX19maWxlbmFtZSkuc3BsaXQoJy0nKS5zaGlmdCgpO1xuY29uc3QgcHJvamVjdFJvb3QgPSBwYXRoLmpvaW4oX19kaXJuYW1lLCAnZml4dHVyZXMnKTtcbmNvbnN0IGZpbGVQYXRoID0gcGF0aC5qb2luKHByb2plY3RSb290LCBgdGVzdC4ke3Rlc3RQcmVmaXh9YCk7XG5cbmRlc2NyaWJlKCdlZGl0b3Jjb25maWcnLCAoKSA9PiB7XG5cdGxldCB0ZXh0RWRpdG9yO1xuXHRjb25zdCB0ZXh0V2l0aG91dFRyYWlsaW5nV2hpdGVzcGFjZXMgPSAnSVxcbmFtXFxuUHJvdmlkZW5jZS4nO1xuXHRjb25zdCB0ZXh0V2l0aE1hbnlUcmFpbGluZ1doaXRlc3BhY2VzID0gJ0kgIFxcdCAgXFxuYW0gIFxcdCAgXFxuUHJvdmlkZW5jZS4nO1xuXG5cdGJlZm9yZUVhY2goKCkgPT4ge1xuXHRcdHdhaXRzRm9yUHJvbWlzZSgoKSA9PlxuXHRcdFx0UHJvbWlzZS5hbGwoW1xuXHRcdFx0XHRhdG9tLnBhY2thZ2VzLmFjdGl2YXRlUGFja2FnZSgnZWRpdG9yY29uZmlnJyksXG5cdFx0XHRcdGF0b20ud29ya3NwYWNlLm9wZW4oZmlsZVBhdGgpXG5cdFx0XHRdKS50aGVuKHJlc3VsdHMgPT4ge1xuXHRcdFx0XHR0ZXh0RWRpdG9yID0gcmVzdWx0c1sxXTtcblx0XHRcdH0pXG5cdFx0KTtcblx0fSk7XG5cblx0YWZ0ZXJFYWNoKCgpID0+IHtcblx0XHQvLyByZW1vdmUgdGhlIGNyZWF0ZWQgZml4dHVyZSwgaWYgaXQgZXhpc3RzXG5cdFx0cnVucygoKSA9PiB7XG5cdFx0XHRmcy5zdGF0KGZpbGVQYXRoLCAoZXJyLCBzdGF0cykgPT4ge1xuXHRcdFx0XHRpZiAoIWVyciAmJiBzdGF0cy5pc0ZpbGUoKSkge1xuXHRcdFx0XHRcdGZzLnVubGluayhmaWxlUGF0aCk7XG5cdFx0XHRcdH1cblx0XHRcdH0pO1xuXHRcdH0pO1xuXG5cdFx0d2FpdHNGb3IoKCkgPT4ge1xuXHRcdFx0dHJ5IHtcblx0XHRcdFx0cmV0dXJuIGZzLnN0YXRTeW5jKGZpbGVQYXRoKS5pc0ZpbGUoKSA9PT0gZmFsc2U7XG5cdFx0XHR9IGNhdGNoIChlcnIpIHtcblx0XHRcdFx0cmV0dXJuIHRydWU7XG5cdFx0XHR9XG5cdFx0fSwgNTAwMCwgYHJlbW92ZWQgJHtmaWxlUGF0aH1gKTtcblx0fSk7XG5cblx0ZGVzY3JpYmUoJ0F0b20gYmVpbmcgc2V0IHRvIHJlbW92ZSB0cmFpbGluZyB3aGl0ZXNwYWNlcycsICgpID0+IHtcblx0XHRiZWZvcmVFYWNoKCgpID0+IHtcblx0XHRcdC8vIGVzbGludC1kaXNhYmxlLW5leHQtbGluZSBjYW1lbGNhc2Vcblx0XHRcdHRleHRFZGl0b3IuZ2V0QnVmZmVyKCkuZWRpdG9yY29uZmlnLnNldHRpbmdzLnRyaW1fdHJhaWxpbmdfd2hpdGVzcGFjZSA9IHRydWU7XG5cdFx0XHQvLyBlc2xpbnQtZGlzYWJsZS1uZXh0LWxpbmUgY2FtZWxjYXNlXG5cdFx0XHR0ZXh0RWRpdG9yLmdldEJ1ZmZlcigpLmVkaXRvcmNvbmZpZy5zZXR0aW5ncy5pbnNlcnRfZmluYWxfbmV3bGluZSA9IGZhbHNlO1xuXHRcdH0pO1xuXG5cdFx0aXQoJ3Nob3VsZCBzdHJpcCB0cmFpbGluZyB3aGl0ZXNwYWNlcyBvbiBzYXZlLicsICgpID0+IHtcblx0XHRcdHRleHRFZGl0b3Iuc2V0VGV4dCh0ZXh0V2l0aE1hbnlUcmFpbGluZ1doaXRlc3BhY2VzKTtcblx0XHRcdHRleHRFZGl0b3Iuc2F2ZSgpO1xuXHRcdFx0ZXhwZWN0KHRleHRFZGl0b3IuZ2V0VGV4dCgpLmxlbmd0aCkudG9FcXVhbCh0ZXh0V2l0aG91dFRyYWlsaW5nV2hpdGVzcGFjZXMubGVuZ3RoKTtcblx0XHR9KTtcblx0fSk7XG59KTtcbiJdfQ==
+//# sourceURL=/home/stefano/.dotfiles/atom.symlink/packages/editorconfig/spec/iss118-spec.js

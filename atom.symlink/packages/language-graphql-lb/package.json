@@ -1,0 +1,39 @@
+{
+  "name": "language-graphql-lb",
+  "version": "0.1.0",
+  "description": "Grammar support for GraphQL files",
+  "keywords": [
+    "GraphQL",
+    "Relay.QL",
+    "Apollo"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gandm/language-graphql-lb.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {},
+  "readme": "# language-graphql-lb package\n\nThis gramar package provides syntax highlighting for [GraphQL](http://graphql.org/) files with a file extension of `.graphql` and `.gql`. It is the same grammar as used by the [language-babel](https://github.com/gandm/language-babel) package which highlights graphql code within JavaScipt, and in particular template literals.\n\n![img1](https://cloud.githubusercontent.com/assets/2313237/18618252/99b4c524-7dda-11e6-9cfc-25cbc07b258c.png)\n\n![img2](https://cloud.githubusercontent.com/assets/2313237/18618254/a4bf0c22-7dda-11e6-9d80-95ef153c3178.png)\n\n![img3](https://cloud.githubusercontent.com/assets/2313237/18618257/b0978664-7dda-11e6-84ba-3fc30881ba66.png)\n\n![img4](https://cloud.githubusercontent.com/assets/2313237/18618264/bda1c658-7dda-11e6-8be5-ebadb1ddde70.png)\n\n![img5](https://cloud.githubusercontent.com/assets/2313237/18618270/d43f6528-7dda-11e6-9a2b-b806433f8450.png)\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/gandm/language-graphql-lb/issues"
+  },
+  "homepage": "https://github.com/gandm/language-graphql-lb#readme",
+  "_id": "language-graphql-lb@0.1.0",
+  "_shasum": "8febd7ce4a0c1eb70a23f36aa6a5c7c62365927c",
+  "_resolved": "file:../d-116927-13186-hmb7nh/package.tgz",
+  "_from": "../d-116927-13186-hmb7nh/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

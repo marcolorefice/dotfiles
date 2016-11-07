@@ -1,0 +1,70 @@
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+/** @babel */
+/* eslint-env jasmine, atomtest */
+
+/*
+  This file contains verifying specs for:
+  https://github.com/sindresorhus/atom-editorconfig/issues/128
+
+  To apply the max_line_length-property the wrap-guide-package is being de/activated if needed,
+  to avoid that two wrap-guides are being displayed at once. The past implementation assumed that
+  changing the activation-state wouldn't be able to override a package-disablement. It turned out
+  that the package activation-state must be guarded by a disablement-proof.
+*/
+
+var _fs = require('fs');
+
+var _fs2 = _interopRequireDefault(_fs);
+
+var _path = require('path');
+
+var _path2 = _interopRequireDefault(_path);
+
+var projectRoot = _path2['default'].join(__dirname, 'fixtures');
+var filePath = _path2['default'].join(projectRoot, 'test.' + _path2['default'].basename(__filename).split('-').shift());
+
+describe('editorconfig', function () {
+	var textEditor = undefined;
+
+	beforeEach(function () {
+		waitsForPromise(function () {
+			return Promise.all([atom.packages.activatePackage('editorconfig'), atom.packages.disablePackage('wrap-guide'), atom.workspace.open(filePath)]).then(function (results) {
+				textEditor = results[2];
+			});
+		});
+	});
+
+	afterEach(function () {
+		// remove the created fixture, if it exists
+		runs(function () {
+			_fs2['default'].stat(filePath, function (err, stats) {
+				if (!err && stats.isFile()) {
+					_fs2['default'].unlink(filePath);
+				}
+			});
+		});
+
+		waitsFor(function () {
+			try {
+				return _fs2['default'].statSync(filePath).isFile() === false;
+			} catch (err) {
+				return true;
+			}
+		}, 5000, 'removed ' + filePath);
+	});
+
+	describe('Atom with disabled wrap-guide', function () {
+		beforeEach(function () {
+			Object.assign(textEditor.getBuffer().editorconfig.settings, {
+				max_line_length: 'auto' // eslint-disable-line camelcase
+			});
+		});
+
+		it('should not activate wrap-guide', function () {
+			expect(atom.packages.isPackageActive('wrap-guide')).toEqual(false);
+		});
+	});
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL3N0ZWZhbm8vLmRvdGZpbGVzL2F0b20uc3ltbGluay9wYWNrYWdlcy9lZGl0b3Jjb25maWcvc3BlYy9pc3MxMjgtc3BlYy5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7a0JBYWUsSUFBSTs7OztvQkFDRixNQUFNOzs7O0FBRXZCLElBQU0sV0FBVyxHQUFHLGtCQUFLLElBQUksQ0FBQyxTQUFTLEVBQUUsVUFBVSxDQUFDLENBQUM7QUFDckQsSUFBTSxRQUFRLEdBQUcsa0JBQUssSUFBSSxDQUN6QixXQUFXLFlBQ0gsa0JBQUssUUFBUSxDQUFDLFVBQVUsQ0FBQyxDQUFDLEtBQUssQ0FBQyxHQUFHLENBQUMsQ0FBQyxLQUFLLEVBQUUsQ0FDcEQsQ0FBQzs7QUFFRixRQUFRLENBQUMsY0FBYyxFQUFFLFlBQU07QUFDOUIsS0FBSSxVQUFVLFlBQUEsQ0FBQzs7QUFFZixXQUFVLENBQUMsWUFBTTtBQUNoQixpQkFBZSxDQUFDO1VBQ2YsT0FBTyxDQUFDLEdBQUcsQ0FBQyxDQUNYLElBQUksQ0FBQyxRQUFRLENBQUMsZUFBZSxDQUFDLGNBQWMsQ0FBQyxFQUM3QyxJQUFJLENBQUMsUUFBUSxDQUFDLGNBQWMsQ0FBQyxZQUFZLENBQUMsRUFDMUMsSUFBSSxDQUFDLFNBQVMsQ0FBQyxJQUFJLENBQUMsUUFBUSxDQUFDLENBQzdCLENBQUMsQ0FBQyxJQUFJLENBQUMsVUFBQSxPQUFPLEVBQUk7QUFDbEIsY0FBVSxHQUFHLE9BQU8sQ0FBQyxDQUFDLENBQUMsQ0FBQztJQUN4QixDQUFDO0dBQUEsQ0FDRixDQUFDO0VBQ0YsQ0FBQyxDQUFDOztBQUVILFVBQVMsQ0FBQyxZQUFNOztBQUVmLE1BQUksQ0FBQyxZQUFNO0FBQ1YsbUJBQUcsSUFBSSxDQUFDLFFBQVEsRUFBRSxVQUFDLEdBQUcsRUFBRSxLQUFLLEVBQUs7QUFDakMsUUFBSSxDQUFDLEdBQUcsSUFBSSxLQUFLLENBQUMsTUFBTSxFQUFFLEVBQUU7QUFDM0IscUJBQUcsTUFBTSxDQUFDLFFBQVEsQ0FBQyxDQUFDO0tBQ3BCO0lBQ0QsQ0FBQyxDQUFDO0dBQ0gsQ0FBQyxDQUFDOztBQUVILFVBQVEsQ0FBQyxZQUFNO0FBQ2QsT0FBSTtBQUNILFdBQU8sZ0JBQUcsUUFBUSxDQUFDLFFBQVEsQ0FBQyxDQUFDLE1BQU0sRUFBRSxLQUFLLEtBQUssQ0FBQztJQUNoRCxDQUFDLE9BQU8sR0FBRyxFQUFFO0FBQ2IsV0FBTyxJQUFJLENBQUM7SUFDWjtHQUNELEVBQUUsSUFBSSxlQUFhLFFBQVEsQ0FBRyxDQUFDO0VBQ2hDLENBQUMsQ0FBQzs7QUFFSCxTQUFRLENBQUMsK0JBQStCLEVBQUUsWUFBTTtBQUMvQyxZQUFVLENBQUMsWUFBTTtBQUNoQixTQUFNLENBQUMsTUFBTSxDQUFDLFVBQVUsQ0FBQyxTQUFTLEVBQUUsQ0FBQyxZQUFZLENBQUMsUUFBUSxFQUFFO0FBQzNELG1CQUFlLEVBQUUsTUFBTTtJQUN2QixDQUFDLENBQUM7R0FDSCxDQUFDLENBQUM7O0FBRUgsSUFBRSxDQUFDLGdDQUFnQyxFQUFFLFlBQU07QUFDMUMsU0FBTSxDQUFDLElBQUksQ0FBQyxRQUFRLENBQUMsZUFBZSxDQUFDLFlBQVksQ0FBQyxDQUFDLENBQUMsT0FBTyxDQUFDLEtBQUssQ0FBQyxDQUFDO0dBQ25FLENBQUMsQ0FBQztFQUNILENBQUMsQ0FBQztDQUNILENBQUMsQ0FBQyIsImZpbGUiOiIvaG9tZS9zdGVmYW5vLy5kb3RmaWxlcy9hdG9tLnN5bWxpbmsvcGFja2FnZXMvZWRpdG9yY29uZmlnL3NwZWMvaXNzMTI4LXNwZWMuanMiLCJzb3VyY2VzQ29udGVudCI6WyIvKiogQGJhYmVsICovXG4vKiBlc2xpbnQtZW52IGphc21pbmUsIGF0b210ZXN0ICovXG5cbi8qXG4gIFRoaXMgZmlsZSBjb250YWlucyB2ZXJpZnlpbmcgc3BlY3MgZm9yOlxuICBodHRwczovL2dpdGh1Yi5jb20vc2luZHJlc29yaHVzL2F0b20tZWRpdG9yY29uZmlnL2lzc3Vlcy8xMjhcblxuICBUbyBhcHBseSB0aGUgbWF4X2xpbmVfbGVuZ3RoLXByb3BlcnR5IHRoZSB3cmFwLWd1aWRlLXBhY2thZ2UgaXMgYmVpbmcgZGUvYWN0aXZhdGVkIGlmIG5lZWRlZCxcbiAgdG8gYXZvaWQgdGhhdCB0d28gd3JhcC1ndWlkZXMgYXJlIGJlaW5nIGRpc3BsYXllZCBhdCBvbmNlLiBUaGUgcGFzdCBpbXBsZW1lbnRhdGlvbiBhc3N1bWVkIHRoYXRcbiAgY2hhbmdpbmcgdGhlIGFjdGl2YXRpb24tc3RhdGUgd291bGRuJ3QgYmUgYWJsZSB0byBvdmVycmlkZSBhIHBhY2thZ2UtZGlzYWJsZW1lbnQuIEl0IHR1cm5lZCBvdXRcbiAgdGhhdCB0aGUgcGFja2FnZSBhY3RpdmF0aW9uLXN0YXRlIG11c3QgYmUgZ3VhcmRlZCBieSBhIGRpc2FibGVtZW50LXByb29mLlxuKi9cblxuaW1wb3J0IGZzIGZyb20gJ2ZzJztcbmltcG9ydCBwYXRoIGZyb20gJ3BhdGgnO1xuXG5jb25zdCBwcm9qZWN0Um9vdCA9IHBhdGguam9pbihfX2Rpcm5hbWUsICdmaXh0dXJlcycpO1xuY29uc3QgZmlsZVBhdGggPSBwYXRoLmpvaW4oXG5cdHByb2plY3RSb290LFxuXHRgdGVzdC4ke3BhdGguYmFzZW5hbWUoX19maWxlbmFtZSkuc3BsaXQoJy0nKS5zaGlmdCgpfWBcbik7XG5cbmRlc2NyaWJlKCdlZGl0b3Jjb25maWcnLCAoKSA9PiB7XG5cdGxldCB0ZXh0RWRpdG9yO1xuXG5cdGJlZm9yZUVhY2goKCkgPT4ge1xuXHRcdHdhaXRzRm9yUHJvbWlzZSgoKSA9PlxuXHRcdFx0UHJvbWlzZS5hbGwoW1xuXHRcdFx0XHRhdG9tLnBhY2thZ2VzLmFjdGl2YXRlUGFja2FnZSgnZWRpdG9yY29uZmlnJyksXG5cdFx0XHRcdGF0b20ucGFja2FnZXMuZGlzYWJsZVBhY2thZ2UoJ3dyYXAtZ3VpZGUnKSxcblx0XHRcdFx0YXRvbS53b3Jrc3BhY2Uub3BlbihmaWxlUGF0aClcblx0XHRcdF0pLnRoZW4ocmVzdWx0cyA9PiB7XG5cdFx0XHRcdHRleHRFZGl0b3IgPSByZXN1bHRzWzJdO1xuXHRcdFx0fSlcblx0XHQpO1xuXHR9KTtcblxuXHRhZnRlckVhY2goKCkgPT4ge1xuXHRcdC8vIHJlbW92ZSB0aGUgY3JlYXRlZCBmaXh0dXJlLCBpZiBpdCBleGlzdHNcblx0XHRydW5zKCgpID0+IHtcblx0XHRcdGZzLnN0YXQoZmlsZVBhdGgsIChlcnIsIHN0YXRzKSA9PiB7XG5cdFx0XHRcdGlmICghZXJyICYmIHN0YXRzLmlzRmlsZSgpKSB7XG5cdFx0XHRcdFx0ZnMudW5saW5rKGZpbGVQYXRoKTtcblx0XHRcdFx0fVxuXHRcdFx0fSk7XG5cdFx0fSk7XG5cblx0XHR3YWl0c0ZvcigoKSA9PiB7XG5cdFx0XHR0cnkge1xuXHRcdFx0XHRyZXR1cm4gZnMuc3RhdFN5bmMoZmlsZVBhdGgpLmlzRmlsZSgpID09PSBmYWxzZTtcblx0XHRcdH0gY2F0Y2ggKGVycikge1xuXHRcdFx0XHRyZXR1cm4gdHJ1ZTtcblx0XHRcdH1cblx0XHR9LCA1MDAwLCBgcmVtb3ZlZCAke2ZpbGVQYXRofWApO1xuXHR9KTtcblxuXHRkZXNjcmliZSgnQXRvbSB3aXRoIGRpc2FibGVkIHdyYXAtZ3VpZGUnLCAoKSA9PiB7XG5cdFx0YmVmb3JlRWFjaCgoKSA9PiB7XG5cdFx0XHRPYmplY3QuYXNzaWduKHRleHRFZGl0b3IuZ2V0QnVmZmVyKCkuZWRpdG9yY29uZmlnLnNldHRpbmdzLCB7XG5cdFx0XHRcdG1heF9saW5lX2xlbmd0aDogJ2F1dG8nIC8vIGVzbGludC1kaXNhYmxlLWxpbmUgY2FtZWxjYXNlXG5cdFx0XHR9KTtcblx0XHR9KTtcblxuXHRcdGl0KCdzaG91bGQgbm90IGFjdGl2YXRlIHdyYXAtZ3VpZGUnLCAoKSA9PiB7XG5cdFx0XHRleHBlY3QoYXRvbS5wYWNrYWdlcy5pc1BhY2thZ2VBY3RpdmUoJ3dyYXAtZ3VpZGUnKSkudG9FcXVhbChmYWxzZSk7XG5cdFx0fSk7XG5cdH0pO1xufSk7XG4iXX0=
+//# sourceURL=/home/stefano/.dotfiles/atom.symlink/packages/editorconfig/spec/iss128-spec.js
