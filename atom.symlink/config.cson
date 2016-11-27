@@ -19,11 +19,10 @@
     ]
     telemetryConsent: "no"
     themes: [
-      "seti-ui"
-      "nova-atom-syntax"
+      "spacegray-peacock-ui"
+      "peacocks-in-space-syntax"
     ]
   editor:
-    fontSize: 15
     invisibles: {}
     showIndentGuide: true
     softWrapAtPreferredLineLength: true
