@@ -10,8 +10,18 @@
       "background-tips"
       "exception-reporting"
       "metrics"
-      "language-babel"
-      "editorconfig"
+      "language-c"
+      "language-csharp"
+      "language-coffee-script"
+      "language-clojure"
+      "language-go"
+      "language-java"
+      "language-objective-c"
+      "language-perl"
+      "language-python"
+      "language-ruby"
+      "language-ruby-on-rails"
+      "language-toml"
     ]
     hideGitIgnoredFiles: true
     ignoredNames: [
@@ -24,15 +34,20 @@
     ]
     telemetryConsent: "no"
     themes: [
-      "spacegray-peacock-ui"
-      "peacocks-in-space-syntax"
+      "northem-dark-atom-ui"
+      "northem-dark-atom-syntax"
     ]
   editor:
     fontSize: 16
     invisibles: {}
     showIndentGuide: true
     softWrapAtPreferredLineLength: true
+  linter: {}
   "markdown-preview": {}
+  minimap:
+    plugins:
+      "my-minimap-plugin": true
+      "my-minimap-pluginDecorationsZIndex": 0
   "release-notes":
     viewedVersion: "0.89.0"
   "spell-check":
