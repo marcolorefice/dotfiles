@@ -28,10 +28,7 @@
       "peacocks-in-space-syntax"
     ]
   editor:
-<<<<<<< HEAD
     fontSize: 16
-=======
->>>>>>> cf219e4306783a9fb5cadccf992844136557311c
     invisibles: {}
     showIndentGuide: true
     softWrapAtPreferredLineLength: true
