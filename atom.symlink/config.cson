@@ -48,6 +48,9 @@
     plugins:
       "my-minimap-plugin": true
       "my-minimap-pluginDecorationsZIndex": 0
+  "package-sync":
+    createOnChange: true
+    forceOverwrite: true
   "release-notes":
     viewedVersion: "0.89.0"
   "spell-check":
@@ -56,6 +59,12 @@
       "source.gfm"
       "text.git-commit"
     ]
+  "sync-settings":
+    _analyticsUserId: "cac92d12-fae3-4e8a-9c95-eb858f857744"
+    _lastBackupHash: "8262c299462d994fb72e3999da3b4388ceae672c"
+    analytics: false
+    gistId: "84c83491fef4cf25c60b8f35315d7af9"
+    personalAccessToken: "bf324cd6372a37e5e066172d8e53c6ba11693495"
   "terminal-plus":
     core: {}
   "tool-bar":
