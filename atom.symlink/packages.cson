@@ -17,9 +17,9 @@ packages: [
   "minimap"
   "northem-dark-atom-syntax"
   "northem-dark-atom-ui"
+  "nova-atom-ui"
   "open-recent"
   "package-sync"
   "platformio-ide-terminal"
-  "sync-settings"
   "tool-bar"
 ]

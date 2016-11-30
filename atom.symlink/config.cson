@@ -59,16 +59,6 @@
       "source.gfm"
       "text.git-commit"
     ]
-  "sync-settings":
-    _analyticsUserId: "cac92d12-fae3-4e8a-9c95-eb858f857744"
-    _lastBackupHash: "3d3c8fa7cf45c06b68c33e3be28c712a8f368dee"
-    analytics: false
-    blacklistedKeys: [
-      "sync-settings.gistId"
-      "sync-settings.personalAccessToken"
-    ]
-    gistId: "84c83491fef4cf25c60b8f35315d7af9"
-    personalAccessToken: "12ffe7fc502f92f6364e2649df0aefecbcaec52f"
   "terminal-plus":
     core: {}
   "tool-bar":
