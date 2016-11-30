@@ -67,6 +67,8 @@
       "sync-settings.gistId"
       "sync-settings.personalAccessToken"
     ]
+    gistId: "84c83491fef4cf25c60b8f35315d7af9"
+    personalAccessToken: "12ffe7fc502f92f6364e2649df0aefecbcaec52f"
   "terminal-plus":
     core: {}
   "tool-bar":
