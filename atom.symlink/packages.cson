@@ -19,7 +19,6 @@ packages: [
   "northem-dark-atom-ui"
   "open-recent"
   "package-sync"
-  "react"
   "sync-settings"
   "terminal-plus"
   "tool-bar"
