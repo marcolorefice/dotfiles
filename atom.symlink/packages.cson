@@ -19,7 +19,7 @@ packages: [
   "northem-dark-atom-ui"
   "open-recent"
   "package-sync"
+  "platformio-ide-terminal"
   "sync-settings"
-  "terminal-plus"
   "tool-bar"
 ]
