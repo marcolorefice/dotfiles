@@ -26,6 +26,21 @@
     },
     {
         "type": "button",
+        "icon": "markdown",
+        "callback": "markdown-preview:toggle",
+        "tooltip": "Markdown preview"
+    },
+    {
+        "type": "button",
+        "icon": "checklist",
+        "callback": "todo-show:find-in-project",
+        "tooltip": "Project To Do List"
+    },
+    {
+        "type": "spacer"
+    },
+    {
+        "type": "button",
         "icon": "three-bars",
         "callback": "editor:auto-indent",
         "tooltip": "Auto Indent"
@@ -39,7 +54,7 @@
     {
         "type": "button",
         "icon": "terminal",
-        "callback": "terminal-plus:toggle",
+        "callback": "platformio-ide-terminal:toggle",
         "tooltip": "Open Terminal"
     },
     {
@@ -53,27 +68,6 @@
         "icon": "circuit-board",
         "callback": "git-control:toggle",
         "tooltip": "Git Control",
-    },
-    {
-        "type": "spacer"
-    },
-    {
-        "type": "button",
-        "icon": "clippy",
-        "callback": "clipboard-plus:toggle",
-        "tooltip": "Clipboard",
-    },
-    {
-        "type": "button",
-        "icon": "bookmark",
-        "callback": "bookmarks:toggle-bookmark",
-        "tooltip": "Toggle Bookmark"
-    },
-    {
-        "type": "button",
-        "icon": "checklist",
-        "callback": "todo-show:find-in-project",
-        "tooltip": "Project To Do List"
     },
     {
         "type": "spacer"

@@ -62,6 +62,6 @@
   "terminal-plus":
     core: {}
   "tool-bar":
-    position: "Left"
+    position: "Right"
   welcome:
     showOnStartup: false
