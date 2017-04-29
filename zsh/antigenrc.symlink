@@ -17,12 +17,14 @@ antigen bundles <<EOBUNDLES
   robbyrussell/oh-my-zsh plugins/meteor  
 EOBUNDLES
 
+antigen theme pygmalion
+
 #apply bundle
 antigen apply
 
-if [ "$OSTYPE"="darwin11.0" ]; then
+if [[ "$OSTYPE" == "darwin11.0" ]]; 
+then
   antigen-bundle osx
 fi
 
-antigen theme pygmalion
 #antigen theme stefanorg/oh-my-zsh themes/stefanorg

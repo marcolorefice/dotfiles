@@ -6,6 +6,7 @@
 [user]
         name = Stefano Corallo
         email = stefanorg@gmail.com
+	email = scorallo@argosoft.it
 [credential]
         helper = cache
 [alias]

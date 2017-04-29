@@ -1,3 +1,4 @@
+#!/bin/bash
 # Installing dockerized command with make
 # https://github.com/stefanorg/make-docker-command
 
