@@ -4,9 +4,9 @@
 [hub]
         protocol = https
 [user]
-        name = Stefano Corallo
-        email = stefanorg@gmail.com
-	email = scorallo@argosoft.it
+        name = Marco Lorefice
+        email = marco.lorefice@gmail.com
+	email = mlorefice@argosoft.it
 [credential]
         helper = cache
 [alias]
